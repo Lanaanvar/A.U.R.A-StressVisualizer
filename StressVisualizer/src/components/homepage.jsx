@@ -2,35 +2,54 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import "./Homepage.css";
+import axios from "axios";
+import { marked } from "marked";
 
 const Homepage = ({ onUserInput }) => {
   const [typedTitle, setTypedTitle] = useState("");
+  const [typedSubtext, setTypedSubtext] = useState("");
   const [inputText, setInputText] = useState("");
-  const [isInputFocused, setIsInputFocused] = useState(true); // Input always visible until submitted
-  const [stressLevel, setStressLevel] = useState(1); // Start from 1
+  const [isInputFocused, setIsInputFocused] = useState(true);
+  const [stressLevel, setStressLevel] = useState(1);
   const [modelMessage, setModelMessage] = useState("");
   const [isBackgroundBlurred, setIsBackgroundBlurred] = useState(false);
-  const [isVisualizerSlidDown, setIsVisualizerSlidDown] = useState(false); // State for sliding effect
-  const [emotion, setEmotion] = useState(""); // State for the emotion (happy, angry, etc.)
+  const [isVisualizerSlidDown, setIsVisualizerSlidDown] = useState(false);
+  const [emotion, setEmotion] = useState("");
   const audioRef = useRef(null);
   const [currentAudio, setCurrentAudio] = useState("forest");
   const navigate = useNavigate();
 
-  const fullTitle = "STRESS VISUALIZER";
+  const fullTitle = "A.U.R.A";
+  const subtext = "Analyze. Understand. Relax. Adapt.";
 
   useEffect(() => {
     let i = 0;
+    let j = 0;
     setTypedTitle("");
-    const interval = setInterval(() => {
+    setTypedSubtext("");
+
+    const titleInterval = setInterval(() => {
       if (i < fullTitle.length) {
         setTypedTitle((prev) => fullTitle.substring(0, i + 1));
         i++;
       } else {
-        clearInterval(interval);
+        clearInterval(titleInterval);
+
+        // Start typing the subtext after the title is complete
+        const subtextInterval = setInterval(() => {
+          if (j < subtext.length) {
+            setTypedSubtext((prev) => subtext.substring(0, j + 1));
+            j++;
+          } else {
+            clearInterval(subtextInterval);
+          }
+        }, 100);
       }
     }, 150);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(titleInterval);
+    };
   }, []);
 
   useEffect(() => {
@@ -49,23 +68,34 @@ const Homepage = ({ onUserInput }) => {
     }
   };
 
-  const handleSendInput = () => {
+  const handleSendInput = async () => {
     if (inputText.trim()) {
-      setIsInputFocused(false); // Move input to the top
-      setIsBackgroundBlurred(true); // Apply blur effect
-
-      // Trigger the visualizer slide-down effect
+      setIsInputFocused(false);
+      setIsBackgroundBlurred(true);
       setIsVisualizerSlidDown(true);
 
-      const simulatedStressLevel = Math.floor(Math.random() * 100) + 1;
-      const simulatedMessage = generateModelMessage(simulatedStressLevel);
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/api/analyze", {
+          input_text: inputText,
+        });
 
-      setModelMessage(simulatedMessage);
-      setEmotion(determineEmotion(simulatedStressLevel)); // Set the emotion based on stress level
-      setInputText("");
+        const { sentiment, sentiment_score, emotions, tips } = response.data;
+        const primaryEmotion = Object.keys(emotions)[0];
+        const primaryEmotionValue = emotions[primaryEmotion];
+        const simulatedStressLevel = Math.floor(sentiment_score * 100);
 
-      // Animate the stress level from 1 to simulatedStressLevel
-      animateStressLevel(simulatedStressLevel);
+        console.log(
+          `First Emotion: ${primaryEmotion}, Value: ${primaryEmotionValue}`
+        );
+
+        setModelMessage(tips);
+        setEmotion(primaryEmotion);
+        setInputText("");
+
+        animateStressLevel(simulatedStressLevel);
+      } catch (error) {
+        console.error("Error analyzing input:", error);
+      }
     }
   };
 
@@ -78,37 +108,41 @@ const Homepage = ({ onUserInput }) => {
       } else {
         clearInterval(interval);
       }
-    }, 10); // Update every 10ms
-  };
-
-  const generateModelMessage = (stress) => {
-    if (stress < 20) return "You're feeling relaxed. Keep it up!";
-    if (stress < 50) return "You seem slightly stressed, try to relax.";
-    if (stress < 75) return "You're quite stressed. Take some time to breathe!";
-    return "You're highly stressed. Consider taking a break or meditating.";
-  };
-
-  const determineEmotion = (stress) => {
-    if (stress < 20) return "happy"; // Happy for low stress
-    if (stress >= 20 && stress < 40) return "anxiety"; // Anxiety for medium-low stress
-    if (stress >= 40 && stress < 60) return "sad"; // Sad for medium stress
-    if (stress >= 60 && stress < 80) return "fear"; // Fear for higher stress
-    return "angry"; // Angry for high stress
+    }, 10);
   };
 
   const barCount = Math.ceil(window.innerWidth / 6);
+
+  useEffect(() => {
+    if (emotion) {
+      const pulsatingLight = document.querySelector(".pulsatingLight");
+      const spreadingLight = document.querySelector(".spreadingLight");
+      if (pulsatingLight && spreadingLight) {
+        pulsatingLight.className = `pulsatingLight ${emotion.toLowerCase()}`;
+        spreadingLight.className = `spreadingLight ${emotion.toLowerCase()}`;
+      }
+    }
+  }, [emotion]);
 
   return (
     <div className="container">
       <div className="loader"></div>
 
-      <div className="title">
-        {typedTitle}
-        <span className={typedTitle.length < fullTitle.length ? "cursor" : ""}></span>
+      {/* Title Section */}
+      <div className="titleContainer">
+        <div className="title">{typedTitle}</div>
+        <div className="subtext">
+          {typedSubtext}
+          <span className={typedSubtext.length < subtext.length ? "cursor" : ""}></span>
+        </div>
       </div>
 
-      {/* Visualizer Container with slideDown class */}
-      <div className={`visualizerContainer ${isVisualizerSlidDown ? "slideDown" : ""}`}>
+      {/* Visualizer Container */}
+      <div
+        className={`visualizerContainer ${
+          isVisualizerSlidDown ? "slideDown" : ""
+        }`}
+      >
         {Array.from({ length: barCount }).map((_, index) => (
           <motion.div
             key={index}
@@ -127,14 +161,35 @@ const Homepage = ({ onUserInput }) => {
         ))}
       </div>
 
-      {/* Pulsating Light based on Emotion */}
+      {/* Pulsating Light */}
       {emotion && (
-        <>
-          <div className={`pulsatingLight ${emotion}`} />
-          <div className={`spreadingLight ${emotion}`} />
-        </>
+        <motion.div
+          className={`pulsatingLight ${emotion.toLowerCase()}`}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.6, 1, 0.6],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+          }}
+        />
+      )}
+      {emotion && (
+        <motion.div
+          className={`spreadingLight ${emotion.toLowerCase()}`}
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+          }}
+        />
       )}
 
+      {/* Input Container */}
       {isInputFocused && (
         <div className="inputContainer">
           <input
@@ -155,18 +210,13 @@ const Homepage = ({ onUserInput }) => {
       {!isInputFocused && (
         <div className="responseContainer">
           <div className="stressMeter">
-            {/* Arc background */}
             <div className="meterArc"></div>
-
-            {/* Meter Needle */}
             <div
               className="meterIndicator"
               style={{
-                transform: `rotate(${(stressLevel / 100) * 180 - 90}deg)`, // Rotate based on stress level
+                transform: `rotate(${(stressLevel / 100) * 180 - 90}deg)`,
               }}
             />
-
-            {/* Stress Level */}
             <div className="stressLevel">{stressLevel}</div>
           </div>
 
@@ -176,7 +226,12 @@ const Homepage = ({ onUserInput }) => {
         </div>
       )}
 
-      <audio ref={audioRef} src={`/public/audio/${currentAudio}.flac`} autoPlay loop />
+      <audio
+        ref={audioRef}
+        src={`/public/audio/${currentAudio}.flac`}
+        autoPlay
+        loop
+      />
 
       <div className="switch">
         <label>
@@ -203,7 +258,7 @@ const Typewriter = ({ text }) => {
     return () => clearInterval(interval);
   }, [text]);
 
-  return <div>{displayedText}</div>;
+  return <div dangerouslySetInnerHTML={{ __html: marked(displayedText.replace(/\n/g, "<br />")) }} />;
 };
 
 export default Homepage;

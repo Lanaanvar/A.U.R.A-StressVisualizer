@@ -1,391 +1,369 @@
 /* Container */
 .container {
-    font-family: "Arial, sans-serif";
-    background-color: #A8BDA2;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: filter 0.3s ease;
+  font-family: "Arial, sans-serif";
+  background-color: #a8bda2;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.3s ease;
 }
 
 /* Blurred Background */
 .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Title - Typewriter Style */
 .title {
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #4C704C;
-    text-align: center;
-    font-family: "Courier New", Courier, monospace;
-    white-space: nowrap;
-    overflow: hidden;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 4.8rem;
+  font-weight: bold;
+  color: #4c704c;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.subtext {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  color: #4c704c;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /* Cursor */
 .cursor {
-    display: inline-block;
-    width: 8px;
-    height: 24px;
-    background-color: #4C704C;
-    margin-left: 5px;
-    animation: blinkCursor 1s infinite;
+  display: inline-block;
+  width: 8px;
+  height: 24px;
+  background-color: #4c704c;
+  margin-left: 5px;
+  animation: blinkCursor 1s infinite;
 }
 
 @keyframes blinkCursor {
-    50% {
-        opacity: 0;
-    }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Visualizer Container */
 .visualizerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 20vh;
-    overflow: hidden;
-    transition: transform 0.5s ease, filter 0.3s ease;  /* Add transition for the sliding effect */
-  }
-  
-  /* Slide down effect */
-  .visualizerContainer.slideDown {
-    transform: translateY(28vh);  /* Slide down by 20vh to center it at 70% of the page height */
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 20vh;
+  overflow: hidden;
+  transition: transform 0.5s ease, filter 0.3s ease; /* Add transition for the sliding effect */
+}
+
+/* Slide down effect */
+.visualizerContainer.slideDown {
+  transform: translateY(
+    28vh
+  ); /* Slide down by 20vh to center it at 70% of the page height */
+}
 
 .bar {
-    width: 4px;
-    background-color: #4C704C; /* Green bars */
-    border-radius: 5px;
-    transform-origin: center; /* Centered for up/down movement */
-    animation: spotifyBars 2s ease-in-out infinite;
+  width: 4px;
+  background-color: #4c704c; /* Green bars */
+  border-radius: 5px;
+  transform-origin: center; /* Centered for up/down movement */
+  animation: spotifyBars 2s ease-in-out infinite;
 }
 
 /* Chat Input */
 .inputContainer {
-    position: fixed;
-    bottom: 10%;
-    width: 60%;
-    max-width: 600px;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    padding: 12px;
-    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    transition: opacity 0.3s ease;
+  position: fixed;
+  bottom: 10%;
+  width: 60%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 12px;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  transition: opacity 0.3s ease;
 }
 
 .textInput {
-    flex: 1;
-    border: none;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 10px;
-    outline: none;
-    background-color: #f0f9f0;
-    color: #708090;
-    margin-right: 10px;
+  flex: 1;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  outline: none;
+  background-color: #f0f9f0;
+  color: #708090;
+  margin-right: 10px;
 }
 
 .sendButton {
-    background-color: #82c882;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #82c882;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Stress Meter and Model Response Section */
 .responseContainer {
-    display: flex;
-    width: 80%;
-    height: 20vh;
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translateX(-50%);
-    justify-content: space-between;
-    padding: 10px;
+  display: flex;
+  width: 80%;
+  height: 20vh;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: space-between;
+  padding: 10px;
 }
 
 /* Stress Meter and Needle */
 .stressMeter {
-    width: 200px; /* Make sure it's a square for a circular meter */
-    height: 200px;
-    background-color: #e0e0e0;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
-  
-  /* Needle (The rotating element) */
-  .meterIndicator {
-    width: 5px;
-    height: 80px; /* Adjust the height of the needle */
-    background-color: #4C704C;
-    position: absolute;
-    bottom: 50%; /* Position the base at the center of the circle */
-    transform-origin: bottom center; /* Rotate from the bottom of the needle */
-    transform: rotate(-90deg); /* Initial position of the needle */
-    transition: transform 0.3s ease-out; /* Smooth rotation */
-  }
-  
-  /* Stress Level Display */
-  .stressLevel {
-    position: absolute;
-    top: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #4C704C;
-    z-index: 1; /* Ensure the text is above the needle */
-  }
-  
-  /* Optional Meter Bar if you want a background bar */
-  .meterBar {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 10px;
-    background-color: #ff6347; /* Stress indicator background */
-    border-radius: 10px 10px 0 0;
-  }
-  
-  /* Arc or background for the meter */
-  .meterArc {
-    width: 200px;
-    height: 200px;
-    background: conic-gradient(#ff6347 0% 100%);
-    position: absolute;
-    border-radius: 50%;
-    z-index: -1;
-  }
-  
+  width: 200px; /* Make sure it's a square for a circular meter */
+  height: 200px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Needle (The rotating element) */
+.meterIndicator {
+  width: 5px;
+  height: 80px; /* Adjust the height of the needle */
+  background-color: #4c704c;
+  position: absolute;
+  bottom: 50%; /* Position the base at the center of the circle */
+  transform-origin: bottom center; /* Rotate from the bottom of the needle */
+  transform: rotate(-90deg); /* Initial position of the needle */
+  transition: transform 0.3s ease-out; /* Smooth rotation */
+}
+
+/* Stress Level Display */
+.stressLevel {
+  position: absolute;
+  top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4c704c;
+  z-index: 1; /* Ensure the text is above the needle */
+}
+
+/* Optional Meter Bar if you want a background bar */
+.meterBar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+  background-color: #ff6347; /* Stress indicator background */
+  border-radius: 10px 10px 0 0;
+}
+
+/* Arc or background for the meter */
+.meterArc {
+  width: 200px;
+  height: 200px;
+  background: conic-gradient(#ff6347 0% 100%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Model Message Container */
 /* Model Message Container */
 /* Model Message Container */
 .modelMessage {
-    position: absolute;      /* Absolute positioning to center it on the screen */
-    top: 50%;                /* Vertically center it */
-    left: 50%;               /* Horizontally center it */
-    transform: translate(-50%, -50%);  /* Adjust for exact centering */
-    width: 600px;            /* Fixed width for the model message container */
-    height: 120px;           /* Fixed height for the container */
-    border-radius: 10px;     /* Rounded corners for a cleaner look */
-    padding: 15px;           /* Inner padding for better spacing */
-    font-size: 1.3rem;       /* Increased font size for better readability */
-    font-weight: bold;       /* Make the text bold */
-    color: #333;             /* Dark text color for readability */
-    display: flex;           /* Flexbox to center text inside */
-    align-items: center;     /* Center text vertically */
-    justify-content: center; /* Center text horizontally */
-    z-index: 1;              /* Ensure it stays on top of other elements */
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  line-height: 1.5;
+  z-index: 1;
+}
+
+.modelMessage p {
+  margin: 0;
+  padding: 0;
+}
+
+.modelMessage strong {
+  color: #4c704c;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 24px;
+  background-color: #4c704c;
+  margin-left: 5px;
+  animation: blinkCursor 0.5s infinite; /* Faster blink speed */
+}
+
+@keyframes blinkCursor {
+  50% {
+    opacity: 0;
   }
-  
-  
-  /* Typewriter effect (adjusted to make it faster) */
-  .modelMessage p {
-    font-size: 1.1rem;
-    color: #333;
-  }
-  
-  .cursor {
-    display: inline-block;
-    width: 8px;
-    height: 24px;
-    background-color: #4C704C;
-    margin-left: 5px;
-    animation: blinkCursor 0.5s infinite; /* Faster blink speed */
-  }
-  
-  @keyframes blinkCursor {
-    50% {
-      opacity: 0;
-    }
-  }
-  
+}
 
 /* Toggle Switch */
 .switch {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    width: 3.5em;
-    height: 2em;
-    display: inline-block;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 3.5em;
+  height: 2em;
+  display: inline-block;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    background-color: #1c4b27;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    cursor: pointer;
-    border-radius: 30px;
-    transition: all 0.4s ease;
+  background-color: #1c4b27;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.4s ease;
 }
 
 .slider::before {
-    position: absolute;
-    content: "";
-    height: 1.4em;
-    width: 1.4em;
-    border-radius: 50%;
-    left: 10%;
-    bottom: 15%;
-    background-color: #8a9a5b;
-    transition: all 0.4s ease;
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  background-color: #8a9a5b;
+  transition: all 0.4s ease;
 }
 
 .switch input:checked + .slider {
-    background-color: #2185d6;
+  background-color: #2185d6;
 }
 
 .switch input:checked + .slider::before {
-    transform: translateX(100%);
-    background-color: #0044cc;
+  transform: translateX(100%);
+  background-color: #0044cc;
 }
 
 /* Pulsating Light Effect */
 .pulsatingLight {
-    position: absolute;
-    left: 16.75%;
-    top: 49%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    z-index: -1; /* Behind the stress meter */
-    animation: pulsate 2s ease-in-out infinite;
-    opacity: 0.6;
-  }
-  
-  /* Spreading Light Effect */
-  .spreadingLight {
-    position: absolute;
-    left: 16.75%;
-    top: 49%;
-    transform: translate(-50%, -50%);
-    width: 800px; /* Larger size */
-    height: 800px; /* Larger size */
-    border-radius: 50%;
-    z-index: -2; /* Behind the pulsating light and the meter */
-    animation: spread 5s ease-out infinite;
-    opacity: 0.3;
-  }
-  
-  
-  /* Pulsating animation */
-  @keyframes pulsate {
-    0% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.6;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(1.5);
-      opacity: 0.4;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.6;
-    }
-  }
-  
-  /* Spreading animation */
-  @keyframes spread {
-    0% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.3;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(3);
-      opacity: 0.2;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.3;
-    }
-  }
-  
-  /* Happy Emotion - Soft Yellow */
-  .pulsatingLight.happy {
-    background-color: rgba(241, 226, 0, 0.6); /* Darker Soft Yellow */
-  }
-  
-  .spreadingLight.happy {
-    background-color: rgba(241, 226, 0, 0.2); /* Lighter Soft Yellow */
-  }
-  
-  /* Sad Emotion - Soft Blue */
-  .pulsatingLight.sad {
-    background-color: rgba(111, 163, 247, 0.6); /* Darker Soft Blue */
-  }
-  
-  .spreadingLight.sad {
-    background-color: rgba(111, 163, 247, 0.2); /* Lighter Soft Blue */
-  }
-  
-  /* Angry Emotion - Soft Red */
-  .pulsatingLight.angry {
-    background-color: rgba(255, 125, 125, 0.6); /* Darker Soft Red */
-  }
-  
-  .spreadingLight.angry {
-    background-color: rgba(255, 125, 125, 0.2); /* Lighter Soft Red */
-  }
-  
-  /* Fear Emotion - Soft Purple */
-  .pulsatingLight.fear {
-    background-color: rgba(209, 167, 244, 0.6); /* Darker Soft Purple */
-  }
-  
-  .spreadingLight.fear {
-    background-color: rgba(209, 167, 244, 0.2); /* Lighter Soft Purple */
-  }
-  
-  /* Anxiety Emotion - Soft Green */
-  .pulsatingLight.anxiety {
-    background-color: rgba(163, 217, 165, 0.6); /* Darker Soft Green */
-  }
-  
-  .spreadingLight.anxiety {
-    background-color: rgba(163, 217, 165, 0.2); /* Lighter Soft Green */
-  }
-  
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.7) 20%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 31%;
+  left: 7%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.spreadingLight {
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.5) 20%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  top: -7%;
+  left: -13%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+}
+
+/* Add unique colors for emotions */
+.pulsatingLight.happy,
+.spreadingLight.happy {
+  background: radial-gradient(
+    circle,
+    rgba(255, 223, 0, 0.8) 20%,
+    rgba(255, 223, 0, 0) 70%
+  );
+}
+
+.pulsatingLight.angry,
+.spreadingLight.angry {
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 0, 0.8) 20%,
+    rgba(255, 0, 0, 0) 70%
+  );
+}
+
+.pulsatingLight.sad,
+.spreadingLight.sad {
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 255, 0.8) 20%,
+    rgba(0, 0, 255, 0) 70%
+  );
+}
+
+.pulsatingLight.relaxed,
+.spreadingLight.relaxed {
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 0, 0.8) 20%,
+    rgba(0, 255, 0, 0) 70%
+  );
+}

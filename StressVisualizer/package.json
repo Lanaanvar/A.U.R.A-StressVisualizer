@@ -10,12 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
+    "axios": "^1.7.9",
     "framer-motion": "^12.4.1",
-=======
->>>>>>> fbc2a87237b6caae1424a299240583f7e746f1c5
+    "marked": "^15.0.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

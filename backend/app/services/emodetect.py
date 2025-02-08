@@ -2,7 +2,7 @@ import os
 from typing import Dict
 import torch
 from transformers import pipeline
-
+import logging
 
 class EmotionAnalyzer:
     """A class to handle multi-emotion detection and analysis in text."""
@@ -67,7 +67,7 @@ class EmotionAnalyzer:
         """Initialize the emotion analyzer with specified model."""
         os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
         self.device = 0 if torch.cuda.is_available() else -1
-        print(f"Device set to use {'GPU' if self.device == 0 else 'CPU'}")  # Add this line for debugging
+        logging.info(f"Device set to use {'GPU' if self.device == 0 else 'CPU'}")
         self.emotion_detector = pipeline('text-classification', 
                                       model=model_name, 
                                       device=self.device)
@@ -83,6 +83,7 @@ class EmotionAnalyzer:
         Returns:
             Dictionary of emotions and their scores
         """
+        logging.info(f"Detecting emotions in text: {input_text}")
         # Get base emotion predictions
         results = self.emotion_detector(input_text)
         
@@ -116,20 +117,5 @@ class EmotionAnalyzer:
         sorted_emotions = dict(sorted(expanded_emotions.items(), 
                                     key=lambda x: x[1], 
                                     reverse=True))
+        logging.info(f"Detected emotions: {sorted_emotions}")
         return sorted_emotions
-
-# Example usage
-#if __name__ == "__main__":
-    #analyzer = EmotionAnalyzer()
-    
-    
-   
-    #print("Detected emotions and intensities:")
-    #for emotion, score in emotions.items():
-        #print(f"{emotion}: {score}")
-#     sample_text = """It is a warm, expansive feeling that starts deep in my chest, spreading out like sunshine through every part of me. It is a lightness, as if I could float, carried by a sense of pure joy and connection. My heart feels full, almost as if it's overflowing with happiness, and every breath feels like a celebration. There is a calm, peaceful energy, yet I am buzzing with excitement, like the world is inviting me to dance in the moment, free and unburdened. It is the feeling of everything being right, and I am perfectly where I am meant to be."""
-    
-#     emotions = analyzer.detect(sample_text)
-#     print("Detected emotions and intensities:")
-#     for emotion, score in emotions.items():
-#         print(f"{emotion}: {score}")
