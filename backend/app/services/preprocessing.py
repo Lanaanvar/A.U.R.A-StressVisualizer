@@ -7,7 +7,10 @@ nltk.download('stopwords')
 nlp = spacy.load('en_core_web_sm')
 stopwords = set(stopwords.words('english'))
 
+# Preprocessing of input text
+
 def preprocess_text(text):
+
     text = text.lower()
     text = re.sub(r"http\S+|www\S+|@\S+", "", text)
     text = re.sub(r"[^a-zA-Z\s]", "", text)
