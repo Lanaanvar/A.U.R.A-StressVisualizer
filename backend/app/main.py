@@ -1,16 +1,9 @@
 from fastapi import FastAPI
-from .response import get_response
+from app.api.routes import router  # Adjust the import path as necessary
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
-
-@app.post("/generate-response")
-def generate_response(emotions: dict):
-    return {"response": get_response(emotions)}
+app.include_router(router, prefix="/api")

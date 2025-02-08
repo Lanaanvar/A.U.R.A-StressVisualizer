@@ -12,12 +12,13 @@ if not GEMINI_API_KEY:
 
 GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent"
 
-def get_response(emotions):
+def get_response(emotions, text):
     detected_emotion = max(emotions, key=emotions.get)
 
     prompt = f"""
-    You are a mental health assistant. A user is experiencing {detected_emotion}.
-    Provide a short, calming, and actionable stress-relief tip. 
+    You are a mental health assistant and a friend in need. Your friend is having the following issue : {text} and is experiencing {detected_emotion}.
+    As a friend, you want to provide some advice to help them feel better and provide a solution to it.
+    As a mental health assistant provide calming, and actionable stress-relief tips. 
     The advice should vary and can include activities like taking a calming walk, listening to calming music, practicing deep breathing, or any other effective stress-relief techniques. Give varied advices and not just breathing techniques.
     """
 
@@ -51,5 +52,5 @@ def get_response(emotions):
         return "Stay calm and take care of yourself."
 
 # Test
-emotions = {"sadness": 0.9, "anger": 0.9, "happiness": 0.0, "anxiety": 0.9}
-print(get_response(emotions))
+# emotions = {"sadness": 0.9, "anger": 0.9, "happiness": 0.0, "anxiety": 0.9}
+# print(get_response(emotions))
