@@ -80,6 +80,16 @@ This will start the server, and you can access the API at `http://127.0.0.1:8000
 ### Screenshots
 <img>
 <img src="asset/modelop.png" alt="Example Image" width="400"/>
+This is the image of the final python output obtained from the models after emotion analysis and text generation.
+</br>
+<img>
+<img src="asset/frontend.jpeg" alt="Example Image" width="400"/>
+The image of our static frontend.
+</br>
+<img>
+<img src="asset/final.jpeg" alt="Example Image" width="400"/>
+The final combined output.
+</br>
 
 
 
@@ -90,6 +100,7 @@ This will start the server, and you can access the API at `http://127.0.0.1:8000
 ## Project Demo
 
 ### Video
+
 
 ## Team Contributions
 Lana Anvar : Worked mainly in the integration of the frontend and the backend.
