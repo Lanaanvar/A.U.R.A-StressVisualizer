@@ -75,7 +75,9 @@ const Homepage = ({ onUserInput }) => {
       setIsVisualizerSlidDown(true);
 
       try {
-        const response = await axios.post("http://127.0.0.1:8000/api/analyze", {
+        const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
+        const response = await axios.post(`${API_BASE_URL}/api/analyze`,{
           input_text: inputText,
         });
 
