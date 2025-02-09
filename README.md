@@ -15,6 +15,7 @@ Member 3 : Lakshmikha Rejith - SOE, CUSAT
 ### Hosted Project Link
 
 
+
 ### Project Description
 AURA is a comprehensive application designed to analyze and visualize the emotional and mental state of users based on their textual input. The application detects emotions, analyzes sentiment, and generates personalized advice to help users manage their stress levels.
 
@@ -40,6 +41,7 @@ Python - FastAPI, Pydantic, Transformers, Torch, Requests, Dotenv, Spacy, NLTK, 
 </br>
 JavaScript - React, Vite, ESLint
 </br>
+Models Used : bhadresh-savani/distilbert-base-uncased-emotion, GEMINI
 </br>
 Tools Used : Visual Studio Code, Git, GitHub, Uvicorn
 
@@ -90,10 +92,6 @@ The image of our static frontend.
 <img src="asset/final.jpeg" alt="Example Image" width="400"/>
 The final combined output.
 </br>
-
-
-
-### Diagrams
 
 
 
