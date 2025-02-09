@@ -63,7 +63,7 @@ const Homepage = ({ onUserInput }) => {
     setCurrentAudio(newAudio);
     if (audioRef.current) {
       audioRef.current.pause();
-      audioRef.current.src = `/public/audio/${newAudio}.flac`;
+      audioRef.current.src = `/audio/${newAudio}.flac`;
       audioRef.current.play();
     }
   };
@@ -230,7 +230,7 @@ const Homepage = ({ onUserInput }) => {
 
       <audio
         ref={audioRef}
-        src={`/public/audio/${currentAudio}.flac`}
+        src={`/audio/${currentAudio}.flac`}
         autoPlay
         loop
       />
