@@ -1,4 +1,4 @@
-# AURA
+# A.U.R.A
 Analyze. Understand. Relax. Adapt
 
 ## Basic Details
@@ -13,8 +13,7 @@ Member 2 : S Sutharya - DCS, CUSAT
 Member 3 : Lakshmikha Rejith - SOE, CUSAT
 
 ### Hosted Project Link
-
-
+Access our project here - https://aquamarine-salamander-a3704c.netlify.app/
 
 ### Project Description
 AURA is a comprehensive application designed to analyze and visualize the emotional and mental state of users based on their textual input. The application detects emotions, analyzes sentiment, and generates personalized advice to help users manage their stress levels.
@@ -98,6 +97,8 @@ The final combined output.
 ## Project Demo
 
 ### Video
+Watch the video here - https://drive.google.com/file/d/1x49GieXJ_4lWub7-4AEsvz7TyJSp-OLD/view?usp=sharing
+
 
 
 ## Team Contributions
