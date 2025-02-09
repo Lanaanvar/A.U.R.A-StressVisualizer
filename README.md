@@ -40,7 +40,9 @@ Python - FastAPI, Pydantic, Transformers, Torch, Requests, Dotenv, Spacy, NLTK, 
 </br>
 JavaScript - React, Vite, ESLint
 </br>
+</br>
 Models Used : bhadresh-savani/distilbert-base-uncased-emotion, GEMINI
+</br>
 </br>
 Tools Used : Visual Studio Code, Git, GitHub, Uvicorn
 
