@@ -79,7 +79,8 @@ This will start the server, and you can access the API at `http://127.0.0.1:8000
 ## Project Documentation
 ### Screenshots
 <img>
-![image](asset/modelop.png)
+<img src="asset/modelop.png" alt="Example Image" width="400"/>
+
 
 
 ### Diagrams
