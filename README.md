@@ -1,9 +1,51 @@
-# StressVisualizer
+# AURA
+Analyze. Understand. Relax. Adapt
 
-## Description
-StressVisualizer is a project aimed at visualizing and analyzing stress levels using various data processing and machine learning techniques. The backend is implemented using FastAPI.
+## Basic Details
 
-## Installation
+### Team Name: GirlCode
+
+### Team Members
+Member 1 : Lana Anvar - DCS, CUSAT 
+</br>
+Member 2 : S Sutharya - DCS, CUSAT 
+</br>
+Member 3 : Lakshmikha Rejith - SOE, CUSAT
+
+### Hosted Project Link
+
+
+### Project Description
+AURA is a comprehensive application designed to analyze and visualize the emotional and mental state of users based on their textual input. The application detects emotions, analyzes sentiment, and generates personalized advice to help users manage their stress levels.
+
+### The Problem Statement
+In today's fast-paced world, individuals are increasingly experiencing high levels of stress and anxiety due to various personal and professional challenges. Despite the availability of numerous mental health resources, many people struggle to find personalized and immediate support that addresses their unique emotional states. Traditional methods of stress management often fail to provide real-time, tailored advice that can help individuals cope with their specific situations.
+
+
+### The Solution
+The solution is to develop a web application that can accurately analyze a person's emotional and mental state based on their textual input and provide personalized, actionable advice to help them manage their stress levels effectively. This solution leverages advanced natural language processing (NLP) techniques to detect emotions, analyze sentiment, and generate contextually relevant advice, thereby offering a comprehensive and user-friendly tool for mental health support.
+
+## Technical Details
+
+### Technologies/Components Used
+Languages Used : Python, JavaScript
+</br>
+</br>
+Frameworks Used : React
+</br>
+</br>
+Libraries Used : 
+</br>
+Python - FastAPI, Pydantic, Transformers, Torch, Requests, Dotenv, Spacy, NLTK, Logging
+</br>
+JavaScript - React, Vite, ESLint
+</br>
+</br>
+Tools Used : Visual Studio Code, Git, GitHub, Uvicorn
+
+
+## Implementation
+### Installation
 To set up the project, follow these steps:
 
 1. Clone the repository:
@@ -26,22 +68,36 @@ To set up the project, follow these steps:
    pip install -r requirements.txt
    ```
 
-## Usage
+### Run
 To run the FastAPI application, use the following command:
 ```sh
 uvicorn main:app --reload
 ```
 This will start the server, and you can access the API at `http://127.0.0.1:8000`.
 
-### Sentiment Analysis Service
-The sentiment analysis service uses the Hugging Face `transformers` library and PyTorch to analyze text sentiment. Example usage:
-```python
-from app.services.sentiment_analysis import analyze
 
-text = "I am feeling great today!"
-sentiment, score = analyze(text)
-print(f"Sentiment: {sentiment}, Score: {score}")
-```
+## Project Documentation
+### Screenshots
+<img>
+![image](https://github.com/user-attachments/assets/082f3a11-a464-491a-8879-f7a996954061)
+
+
+### Diagrams
+
+
+
+## Project Demo
+
+### Video
+
+## Team Contributions
+Lana Anvar : Worked mainly in the integration of the frontend and the backend.
+</br>
+S Sutharya : Designed and created the frontend.
+</br>
+Lakshmikha Rejith : Worked mainly in the model integration and optimization.
+
+
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
