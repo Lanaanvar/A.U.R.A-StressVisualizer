@@ -79,7 +79,7 @@ This will start the server, and you can access the API at `http://127.0.0.1:8000
 ## Project Documentation
 ### Screenshots
 <img>
-![image](https://github.com/user-attachments/assets/082f3a11-a464-491a-8879-f7a996954061)
+![image](asset/modelop.png)
 
 
 ### Diagrams
