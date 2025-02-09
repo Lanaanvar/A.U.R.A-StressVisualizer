@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import "./Homepage.css";
+import "./homepage.css";
 import axios from "axios";
 import { marked } from "marked";
 
