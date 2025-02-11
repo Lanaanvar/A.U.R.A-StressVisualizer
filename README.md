@@ -104,11 +104,11 @@ Watch the video here - https://drive.google.com/file/d/1x49GieXJ_4lWub7-4AEsvz7T
 
 
 ## Team Contributions
-Lana Anvar : Worked mainly in the integration of the frontend and the backend.
+Lana Anvar : Backend, Frontend-Backend Integration.
 </br>
-S Sutharya : Designed and created the frontend.
+S Sutharya : Frontend - UI/UX.
 </br>
-Lakshmikha Rejith : Worked mainly in the model integration and optimization.
+Lakshmikha Rejith : AI/ML Model Integration and Optimization.
 
 
 
