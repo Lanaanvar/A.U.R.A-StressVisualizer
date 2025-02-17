@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router
 import logging
+import os
+import uvicorn
 
 logging.basicConfig(level=logging.INFO)
 
@@ -16,4 +18,8 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-app.include_router(router, prefix="/api/analyze")
+app.include_router(router, prefix="/api")
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  
+    uvicorn.run(app, host="0.0.0.0", port=port)
