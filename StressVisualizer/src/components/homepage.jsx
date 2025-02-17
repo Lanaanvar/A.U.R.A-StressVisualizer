@@ -77,7 +77,7 @@ const Homepage = ({ onUserInput }) => {
       try {
         const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
-        const response = await axios.post(`${API_BASE_URL}/api/analyze`,{
+        const response = await axios.post(`${API_BASE_URL}/api/analyze`, {
           input_text: inputText,
         });
 
@@ -135,7 +135,9 @@ const Homepage = ({ onUserInput }) => {
         <div className="title">{typedTitle}</div>
         <div className="subtext">
           {typedSubtext}
-          <span className={typedSubtext.length < subtext.length ? "cursor" : ""}></span>
+          <span
+            className={typedSubtext.length < subtext.length ? "cursor" : ""}
+          ></span>
         </div>
       </div>
 
@@ -228,12 +230,7 @@ const Homepage = ({ onUserInput }) => {
         </div>
       )}
 
-      <audio
-        ref={audioRef}
-        src={`/audio/${currentAudio}.flac`}
-        autoPlay
-        loop
-      />
+      <audio ref={audioRef} src={`/audio/${currentAudio}.flac`} autoPlay loop />
 
       <div className="switch">
         <label>
@@ -260,7 +257,13 @@ const Typewriter = ({ text }) => {
     return () => clearInterval(interval);
   }, [text]);
 
-  return <div dangerouslySetInnerHTML={{ __html: marked(displayedText.replace(/\n/g, "<br />")) }} />;
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: marked(displayedText.replace(/\n/g, "<br />")),
+      }}
+    />
+  );
 };
 
 export default Homepage;
