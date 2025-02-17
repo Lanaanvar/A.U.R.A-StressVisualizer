@@ -16,4 +16,4 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-app.include_router(router, prefix="/api")
+app.include_router(router, prefix="/api/analyze")
