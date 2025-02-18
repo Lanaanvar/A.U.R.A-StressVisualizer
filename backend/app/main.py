@@ -12,7 +12,7 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://stress-visualizer-mlx3f4guz-lanas-projects-b54c3001.vercel.app"],
+    allow_origins=["https://stress-visualizer.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods
     allow_headers=["*"],  # Allow all headers
@@ -21,5 +21,5 @@ app.add_middleware(
 app.include_router(router, prefix="/api")
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))  
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
