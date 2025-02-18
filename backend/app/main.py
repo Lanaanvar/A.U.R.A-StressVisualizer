@@ -12,7 +12,7 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://stress-visualizer.vercel.app"],
+    allow_origins=["https://stress-visualizer-mlx3f4guz-lanas-projects-b54c3001.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods
     allow_headers=["*"],  # Allow all headers
