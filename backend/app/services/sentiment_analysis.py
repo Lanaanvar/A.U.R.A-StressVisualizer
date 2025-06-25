@@ -5,7 +5,7 @@ import logging
 device = 0 if torch.cuda.is_available() else -1
 logging.info(f"Device set to use {'GPU' if device == 0 else 'CPU'}")
 
-analyser = pipeline('sentiment-analysis', device=device)
+analyser = pipeline("text-classification", model="tabularisai/multilingual-sentiment-analysis")
 
 def normalize_score(score):
     return (score - 0.5) * 2
