@@ -7,6 +7,9 @@ import logging
 
 router = APIRouter()
 
+# 💡 Load models once during server startup
+emotion_analyzer = emodetect.EmotionAnalyzer()
+
 class AnalyzeRequest(BaseModel):
     input_text: str
 
@@ -22,7 +25,6 @@ async def analyze_input(request: AnalyzeRequest):
         logging.info("Sentiment analysis completed")
 
         logging.info("Starting emotion detection")
-        emotion_analyzer = emodetect.EmotionAnalyzer()
         emotions = emotion_analyzer.detect(cleaned_text)
         logging.info("Emotion detection completed")
 
@@ -38,4 +40,4 @@ async def analyze_input(request: AnalyzeRequest):
         }
     except Exception as e:
         logging.error(f"Error during analysis: {e}", exc_info=True)
-        raise e
+        return {"error": str(e)}
